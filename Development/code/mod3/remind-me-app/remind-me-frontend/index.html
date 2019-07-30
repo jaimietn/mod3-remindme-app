@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>remindMe</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="stylesheet.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<header>
+  <form id="login-form" action="#" method="post">
+    <label for="login-form"> What's your name? </label>
+    <input type="text" id="login-name" placeholder="your name">
+    <input class="button" id="login-btn" type="submit" value="Login">
+  </form>
+
+  <h2>Welcome to remindMe</h2>
+</header>
+
+<section>
+  <nav id="navbar">
+      <div><button id="add-task" class="button btn-add">Add a Task</button></div>
+      <div><button id="today" class="button btn-today">Today</button></div>
+      <div><button id="week" class="button btn-week">This Week</button></div>
+      <div><button id="month" class="button btn-month">This Month</button></div>
+      <div><button id="year" class="button btn-year">This Year</button></div>
+      <div><button id="life" class="button btn-life">Life Goals</button></div>
+      <div><button id="reminders" class="button btn-reminders">My Reminders</button></div>
+      <div><button id="profile" class="button btn-profile">My Profile</button></div>
+  </nav>
+
+  <article>
+    <div class="show-list">
+      <h1>Add a new task:</h1>
+      <form id="create-task-form" action="#" method="post">
+        <label for="new-task-name"> What's it called? </label>
+        <input type="text" id="new-task-name" name="new-task" placeholder="name your task">
+        <br>
+        <br>
+        <label for="new-task-description"> Describe it: </label>
+        <br>
+        <textarea id="new-task-description" name="new-task-description" rows="4" cols="50" placeholder="describe your task"> describe your task </textarea>
+        <br>
+        <br>
+        <label for="new-task-date"> When is it due? </label>
+        <select>
+          <option value="today">Today</option>
+          <option value="week">This Week</option>
+          <option value="month">This Month</option>
+          <option value="year">This Year</option>
+          <option value="life">Life Goal</option>
+        </select>
+        <br>
+        <br>
+        <input class="button" id="submit-btn" type="submit" value="Create New Task">
+      </form>
+    </div>
+  </article>
+</section>
+
+<footer>
+  <p> © remindMe 2019 // Flatiron School NYC </p>
+</footer>
+<script src="./src/index.js"></script>
+</body>
+</html>
+
+<!--
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>beWell</title>
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to beWell</h1>
+    </header>
+    <div id="task-form">
+      <form id="create-task-form" action="#" method="post">
+        <label for="new-task-description">Add a task:</label>
+        <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
+        <input id="submit-btn" type="submit" value="Create New Task">
+      </form>
+    </div>
+
+    <div id="list-left">
+      <h2>List Left</h2>
+    </div>
+
+    <div id="list-right">
+      <h2>List Right</h2>
+    </div>
+
+    <div id="record">
+      <h2>My Records</h2>
+      <ul id="records">
+      </ul>
+    </div>
+
+    <div id="list">
+      <h2>My Tasks</h2>
+      <ul id="tasks">
+      </ul>
+    </div>
+
+  </body>
+</html> -->
