@@ -23,6 +23,11 @@ class TasksController < ApplicationController
     @task = Task.create(create_task_params)
   end
 
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+  end
+
   private
 
   def create_task_params

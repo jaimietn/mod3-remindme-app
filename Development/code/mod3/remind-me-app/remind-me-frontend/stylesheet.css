@@ -84,7 +84,7 @@ article {
 }
 .list-box {
   display: flex;
-  display: column;
+  /* display: column; */
   padding: 15px;
 }
 /* end of article styling */

@@ -92,49 +92,73 @@ function addListItem(e) {
 }
 
 navBar.addEventListener('click', (e) => {
-	if (e.target.id === 'today') {
-		console.log("today!")
-		getUserTasks(currentUserId)
-	}
-	if (e.target.id === 'week') {
-		console.log("week!")
-	}
-	if (e.target.id === 'month') {
-		console.log("month!")
-	}
-	if (e.target.id === 'year') {
-		console.log("year!")
-	}
-	if (e.target.id === 'life') {
-		console.log("life!")
-	}
-	if (e.target.id === 'reminders') {
-		console.log("reminders!")
-	}
-	if (e.target.id === 'profile') {
-		console.log("profile!")
-	}
+	// showFilteredTasks(e.target.id)
+	// if (e.target.id === 'today') {
+	// 	console.log("today!")
+	// 	getUserTasks(currentUserId)
+	// }
+	// if (e.target.id === 'week') {
+	// 	console.log("week!")
+	// }
+	// if (e.target.id === 'month') {
+	// 	console.log("month!")
+	// }
+	// if (e.target.id === 'year') {
+	// 	console.log("year!")
+	// }
+	// if (e.target.id === 'life') {
+	// 	console.log("life!")
+	// }
+	getUserTasks(e.target.id)
 })
 
-function getUserTasks(currentUserId) {
+// function showFilteredTasks(timePeriod){
+// 	getUserTasks(currentUserId)
+// 	if (timePeriod === ){
+//
+// 	}
+// }
+function getUserTasks(dueDate) {
 	fetch(`${USERS_URL}/${currentUserId}`)
 	.then(resp => resp.json())
-	.then(currentUserObject => showTasks(currentUserObject))
+	.then(currentUserObject => showTasks(currentUserObject, dueDate))
 }
 
-function showTasks(currentUserObject) {
-	currentUserObject.data.attributes.tasks.forEach(task => addSingleTaskToPage(task))
+function showTasks(currentUserObject, dueDate) {
+	listBox.innerHTML = ''
+	const filteredTasks = currentUserObject.data.attributes.tasks.filter(task => task.due === dueDate)
+	console.log(filteredTasks)
+	filteredTasks.forEach(task => addSingleTaskToPage(task))
+
 }
 
 function addSingleTaskToPage(task) {
   listBox.innerHTML += `
-		<p> <strong> ${task.name} </strong> </p>
+	<ul>
+		<li> <strong> ${task.title} </strong> </li>
 		<p> ${task.description} </p>
-		<p> ${task.escription} </p>
+		<p hidden> ${task.due}</p>
 		<p hidden> ${task.id}</p>
-		<p> <button id="delete" class="delete-btn"> Delete </button> </p>
+		<p> <button data-id=${task.id} id="delete" class="delete-btn"> Delete </button> </p>
+	</ul>
+	<br>
   `
 }
+
+listBox.addEventListener('click', (e) => {
+	if (e.target.id === 'delete') {
+		// debugger
+		e.target.parentElement.parentElement.remove()
+		deleteItem(e)
+	}
+})
+
+function deleteItem(e) {
+	fetch(TASKS_URL + '/' + e.target.dataset.id, {
+		method: 'DELETE'
+	})
+}
+
 
 // newUserObject => {
 // 	document.querySelector('#user-greeting').innerHTML = ` <div id="user-greeting">
