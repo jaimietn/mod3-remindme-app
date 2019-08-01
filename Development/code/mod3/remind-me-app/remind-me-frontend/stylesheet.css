@@ -70,12 +70,24 @@ section {
 
 /* Style the content */
 article {
-  -webkit-flex: 3;
-  -ms-flex: 3;
+  /* -webkit-flex: 3;
+  -ms-flex: 3; */
   flex: 3;
+  display: flex;
   background-color: #FFE66D;
   padding: 15px;
 }
+.task-form {
+  display: flex;
+  display: column;
+  padding: 15px;
+}
+.list-box {
+  display: flex;
+  display: column;
+  padding: 15px;
+}
+/* end of article styling */
 
 /* Style the footer */
 footer {
@@ -256,7 +268,6 @@ button {
 }
 
 #task-form {
-
 }
 
 #record {

@@ -1,13 +1,17 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = Task.all
-    render json: (@tasks)
+    tasks = Task.all
+    render json: TaskSerializer.new(tasks)
+    # @tasks = Task.all
+    # render json: (@tasks)
   end
 
   def show
-    @task = Task.find_by(params[:id])
-    render json: (@task)
+    task = Task.find(params[:id])
+    render json: TaskSerializer.new(task)
+    # @task = Task.find_by(params[:id])
+    # render json: (@task)
   end
 
   def new

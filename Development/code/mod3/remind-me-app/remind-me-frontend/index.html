@@ -16,35 +16,37 @@
   </form>
 
   <h2>Welcome to remindMe</h2>
+  <div id="user-greeting"> </div>
 </header>
 
 <section>
   <nav id="navbar">
-      <div><button id="add-task" class="button btn-add">Add a Task</button></div>
+
       <div><button id="today" class="button btn-today">Today</button></div>
       <div><button id="week" class="button btn-week">This Week</button></div>
       <div><button id="month" class="button btn-month">This Month</button></div>
       <div><button id="year" class="button btn-year">This Year</button></div>
       <div><button id="life" class="button btn-life">Life Goals</button></div>
-      <div><button id="reminders" class="button btn-reminders">My Reminders</button></div>
-      <div><button id="profile" class="button btn-profile">My Profile</button></div>
+      <!-- <div><button id="reminders" class="button btn-reminders">My Reminders</button></div>
+      <div><button id="profile" class="button btn-profile">My Profile</button></div> -->
   </nav>
 
   <article>
-    <div class="show-list">
-      <h1>Add a new task:</h1>
+    <div class="task-form">
       <form id="create-task-form" action="#" method="post">
+        <h1>Add a new task:</h1>
         <label for="new-task-name"> What's it called? </label>
+        <hidden user_id = "user.id">
         <input type="text" id="new-task-name" name="new-task" placeholder="name your task">
         <br>
         <br>
         <label for="new-task-description"> Describe it: </label>
         <br>
-        <textarea id="new-task-description" name="new-task-description" rows="4" cols="50" placeholder="describe your task"> describe your task </textarea>
+        <textarea id="new-task-description" name="new-task-description" rows="4" cols="50" placeholder="describe your task"></textarea>
         <br>
         <br>
         <label for="new-task-date"> When is it due? </label>
-        <select>
+        <select id="due-menu">
           <option value="today">Today</option>
           <option value="week">This Week</option>
           <option value="month">This Month</option>
@@ -55,6 +57,8 @@
         <br>
         <input class="button" id="submit-btn" type="submit" value="Create New Task">
       </form>
+    </div>
+    <div class="list-box">
     </div>
   </article>
 </section>
