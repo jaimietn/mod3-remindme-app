@@ -5,6 +5,9 @@ const loginForm = document.querySelector('#login-form')
 const navBar = document.querySelector('#navbar')
 const taskForm = document.querySelector('.task-form')
 const listBox = document.querySelector('.list-box')
+const taskNameField = document.querySelector('#new-task-name')
+const taskDescriptionField = document.querySelector('#new-task-description')
+const taskDueField = document.querySelector('#due-menu')
 let currentUserId = null
 
 //end global vars
@@ -12,7 +15,6 @@ let currentUserId = null
 loginForm.addEventListener('click', (e) => {
 	e.preventDefault()
 	if (e.target.id === 'login-btn') {
-		console.log('logged in!')
 		addUser(e)
 	}
 })
@@ -78,20 +80,13 @@ function addListItem(e) {
 		due: newTaskDue,
 		completed: 'false',
 		user_id: currentUserId,
-		//need to add real user id
 		})
 	})
-	// .then(resp => resp.json())
-	// .then(newTaskObject => {
-	// 	document.querySelector('.list-box').innerHTML =`
-	// 	  <li> ${newTaskName} </li>
-	// 		<li> ${newTaskDescription} </li>
-	// 		<li> ${newTaskDue} </li>
-	// 		`
-	// })
 }
 
 navBar.addEventListener('click', (e) => {
+	getUserTasks(e.target.id)
+})
 	// showFilteredTasks(e.target.id)
 	// if (e.target.id === 'today') {
 	// 	console.log("today!")
@@ -109,8 +104,6 @@ navBar.addEventListener('click', (e) => {
 	// if (e.target.id === 'life') {
 	// 	console.log("life!")
 	// }
-	getUserTasks(e.target.id)
-})
 
 // function showFilteredTasks(timePeriod){
 // 	getUserTasks(currentUserId)
@@ -129,7 +122,6 @@ function showTasks(currentUserObject, dueDate) {
 	const filteredTasks = currentUserObject.data.attributes.tasks.filter(task => task.due === dueDate)
 	console.log(filteredTasks)
 	filteredTasks.forEach(task => addSingleTaskToPage(task))
-
 }
 
 function addSingleTaskToPage(task) {
@@ -158,12 +150,3 @@ function deleteItem(e) {
 		method: 'DELETE'
 	})
 }
-
-
-// newUserObject => {
-// 	document.querySelector('#user-greeting').innerHTML = ` <div id="user-greeting">
-// 		<h3> Hi, ${newUserObject.name}!</h3>
-// 		<p hidden>${newUserObject.id}</p>
-// 	</div>`
-// })
-// }
