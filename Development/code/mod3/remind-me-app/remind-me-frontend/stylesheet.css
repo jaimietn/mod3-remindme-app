@@ -11,6 +11,9 @@ header {
   color: white;
   min-height: 300px;
 }
+li {
+  list-style-type: circle;
+}
 
 #login-form {
   font-size: 20px;
@@ -25,6 +28,10 @@ header {
   height: 30px;
   width: 100px;
   margin-top: 10px;
+}
+
+#submit-btn {
+  margin-left: 80px;
 }
 
 /* Style the navigation menu */

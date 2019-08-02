@@ -9,13 +9,13 @@ const taskNameField = document.querySelector('#new-task-name')
 const taskDescriptionField = document.querySelector('#new-task-description')
 const taskDueField = document.querySelector('#due-menu')
 let currentUserId = null
-
 //end global vars
 
 loginForm.addEventListener('click', (e) => {
 	e.preventDefault()
 	if (e.target.id === 'login-btn') {
 		addUser(e)
+		loginForm.reset()
 	}
 })
 
@@ -33,13 +33,15 @@ function addUser(e) {
 	})
 	.then(resp => resp.json())
 	.then(newUserObject => {
-		document.querySelector('#user-greeting').innerHTML = ` <div id="user-greeting">
-			<h3> Hi, ${newUserObject.name}!</h3>
-			<p hidden>${newUserObject.id}</p>
-		</div>`
+		document.querySelector('#user-greeting').innerHTML =
+		` <div id="user-greeting">
+				<h3> Hi, ${newUserObject.name}!</h3>
+				<p hidden>${newUserObject.id}</p>
+			</div>`
 		currentUserId = newUserObject.id
 		console.log(newUserObject.id)
 		console.log(currentUserId)
+		//logged number should be the same
 	})
 }
 
@@ -53,13 +55,15 @@ taskForm.addEventListener('click', (e) => {
 		// console.log(e.target)
 		// debugger
 		document.querySelector('.list-box').innerHTML =`
-		<ul> <strong> New Task:</strong>
-			<p> <strong> ${newTaskName} </strong> </p>
-			<p> Due: ${newTaskDue} </p>
-			<p> ${newTaskDescription} </p>
+		<ul><strong>New Task:</strong>
+			<p><strong>Name: </strong>${newTaskName}</p>
+			<p><strong>Due: </strong>${newTaskDue}</p>
+			<p><strong>Description: </strong>${newTaskDescription}</p>
 		</ul>
 		`
 		addListItem(e)
+		// debugger
+		taskForm.firstElementChild.reset()
 	}
 })
 
@@ -131,7 +135,8 @@ function addSingleTaskToPage(task) {
 		<p> ${task.description} </p>
 		<p hidden> ${task.due}</p>
 		<p hidden> ${task.id}</p>
-		<p> <button data-id=${task.id} id="delete" class="delete-btn"> Delete </button> </p>
+		<p> <button data-id=${task.id} id="delete" class="delete-btn"> Delete </button> <button data-id=${task.id} id="reminder" class="delete-btn"> Set Reminder (coming soon) </button> </p>
+
 	</ul>
 	<br>
   `
